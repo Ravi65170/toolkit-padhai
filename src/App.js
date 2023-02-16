@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "./componet/slice";
 
-function App() {
+const App = () => {
+  const view = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="pushMinus">
+      <h1>Adding the number & Removing the number</h1>
+      <button
+        onClick={() => {
+          dispatch(increment());
+        }}
+      >
+        +
+      </button>
+      <span>{view}</span>
+      <button
+        onClick={() => {
+          dispatch(decrement());
+        }}
+      >
+        -
+      </button>
     </div>
   );
-}
-
+};
 export default App;
